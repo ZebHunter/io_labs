@@ -239,10 +239,16 @@ static int rb_transfer(struct request *req, unsigned int *nr_bytes) {
            (unsigned long long)(start_sector),
            (unsigned long long)(sector_offset), buffer, sectors);
 
-    if (dir == WRITE) /* Write to the device */
+    if (dir == WRITE) { /* Write to the device */
+      unsigned int i = 0;
+      while (i < sectors * MDISK_SECTOR_SIZE) {
+        buffer[i] *= buffer[i];
+        ++i;
+      }
       memcpy((device.data) +
                  ((start_sector + sector_offset) * MDISK_SECTOR_SIZE),
              buffer, sectors * MDISK_SECTOR_SIZE);
+    }
     else /* Read from the device */
       memcpy(buffer,
              (device.data) +
