@@ -83,7 +83,7 @@ static PartTable def_part_table =
 		end_head: 0xB,
 		end_cyl: 0x9F,
 		abs_start_sec: 0x5000,
-		sec_in_part: 0xA000
+		sec_in_part: 0x14000
 	}
 };
 
@@ -101,7 +101,7 @@ static const PartTable def_log_part_table[] =
 			end_sec: 0x20,
 			end_cyl: 0x9F,
 			abs_start_sec: 0x1,
-			sec_in_part: 0x0FFF
+			sec_in_part: 0x9FFF
 		},
 		{
 			boot_type: 0x00,
@@ -127,7 +127,7 @@ static const PartTable def_log_part_table[] =
 			end_sec: 0x20,
 			end_cyl: 0x9F,
 			abs_start_sec: 0x1,
-			sec_in_part: 0x8FFF
+			sec_in_part: 0x9FFF
 		}
 	}
 };
