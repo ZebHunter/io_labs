@@ -46,6 +46,76 @@
 /dev/vramdisk6              40961  81919   40959    20M            83 Linux
 ```
 
+Чтобы посмотреть время загрузки и выгрузки данных использовать скрипт `test.sh`:
+```
+./script.sh 
+mke2fs 1.45.5 (07-Jan-2020)
+Creating filesystem with 2559 4k blocks and 2560 inodes
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (1024 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+mke2fs 1.45.5 (07-Jan-2020)
+Creating filesystem with 5119 4k blocks and 5120 inodes
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (1024 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+mke2fs 1.45.5 (07-Jan-2020)
+Creating filesystem with 5119 4k blocks and 5120 inodes
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (1024 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+5+0 records in
+5+0 records out
+5242880 bytes (5,2 MB, 5,0 MiB) copied, 0,0205646 s, 255 MB/s
+5+0 records in
+5+0 records out
+5242880 bytes (5,2 MB, 5,0 MiB) copied, 0,0164688 s, 318 MB/s
+5+0 records in
+5+0 records out
+5242880 bytes (5,2 MB, 5,0 MiB) copied, 0,0165564 s, 317 MB/s
+Copying files from virtual file to virtual file
+5,00MiB 0:00:00 [1,64GiB/s] [================================================================================================>] 100%            
+5,00MiB 0:00:00 [1,79GiB/s] [================================================================================================>] 100%            
+5,00MiB 0:00:00 [ 331MiB/s] [================================================================================================>] 100%            
+5+0 records in
+5+0 records out
+5242880 bytes (5,2 MB, 5,0 MiB) copied, 0,0286135 s, 183 MB/s
+5+0 records in
+5+0 records out
+5242880 bytes (5,2 MB, 5,0 MiB) copied, 0,0241369 s, 217 MB/s
+5+0 records in
+5+0 records out
+5242880 bytes (5,2 MB, 5,0 MiB) copied, 0,0153829 s, 341 MB/s
+Copying files from virtual file to real file
+5,00MiB 0:00:00 [ 935MiB/s] [================================================================================================>] 100%            
+5,00MiB 0:00:00 [ 459MiB/s] [================================================================================================>] 100%            
+5,00MiB 0:00:00 [ 278MiB/s] [================================================================================================>] 100%
+
+```
+
 ## Примеры использования
 
-...
+```
+scuf@scuf-VirtualBox:/media/sf_buba20/io_labs/io_labs/lab2$ sudo echo "1" | sudo dd of=/dev/vramdisk6
+0+1 records in
+0+1 records out
+2 bytes copied, 0,00529758 s, 0,4 kB/s
+sasha-p@sashap-VirtualBox:/media/sf_buba20/io_labs/io_labs/lab2$ sudo xxd /dev/vramdisk6 | head -n 5
+00000000: 6164 0000 0000 0000 0000 0000 0000 0000  ad..............
+00000010: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000020: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000030: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000040: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+
+```
+
+
