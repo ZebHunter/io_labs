@@ -1,14 +1,16 @@
-obj-m = lab2.o
+# name = lab3
+name = virt_net_if
+obj-m = $(name).o
 PWD = $(shell pwd)
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M="$(PWD)" modules
 
 load:
-	sudo insmod lab2.ko
+	sudo insmod $(name).ko
 
 unload:
-	sudo rmmod lab2.ko
+	sudo rmmod $(name).ko
 
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M="$(PWD)" clean
