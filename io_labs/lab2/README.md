@@ -7,12 +7,13 @@
 ## Описание функциональности драйвера
 
 Реализовать драйвер блочного устройства, создающего виртуальный диск в RAM со следующими разделами:
- - Один первичный раздел 10 Мбайт
- - Один расширенный раздел, содержащий 2 раздела по 20 Мбайт
+
+- Один первичный раздел 10 Мбайт
+- Один расширенный раздел, содержащий 2 раздела по 20 Мбайт
 
 ## Инструкция по сборке
 
-Для сборки использовать 
+Для сборки использовать
 
 `make`
 
@@ -24,14 +25,15 @@
 
 `make unload`
 
-Для очистки: 
+Для очистки:
 
 `make clean`
 
 ## Инструкция пользователя
 
 С помощью команды `sudo fdisk -l /dev/vramdisk` можно посмотреть информацию о разделах диска:
-```
+
+```bash
 Диск /dev/vramdisk: 50 MiB, 52428800 байт, 102400 секторов
 Единицы: секторов по 1 * 512 = 512 байт
 Размер сектора (логический/физический): 512 байт / 512 байт
@@ -47,29 +49,30 @@
 ```
 
 Чтобы посмотреть время загрузки и выгрузки данных использовать скрипт `script.sh`:
-```
-./script.sh 
+
+```bash
+./script.sh
 mke2fs 1.45.5 (07-Jan-2020)
 Creating filesystem with 2559 4k blocks and 2560 inodes
 
-Allocating group tables: done                            
-Writing inode tables: done                            
+Allocating group tables: done
+Writing inode tables: done
 Creating journal (1024 blocks): done
 Writing superblocks and filesystem accounting information: done
 
 mke2fs 1.45.5 (07-Jan-2020)
 Creating filesystem with 5119 4k blocks and 5120 inodes
 
-Allocating group tables: done                            
-Writing inode tables: done                            
+Allocating group tables: done
+Writing inode tables: done
 Creating journal (1024 blocks): done
 Writing superblocks and filesystem accounting information: done
 
 mke2fs 1.45.5 (07-Jan-2020)
 Creating filesystem with 5119 4k blocks and 5120 inodes
 
-Allocating group tables: done                            
-Writing inode tables: done                            
+Allocating group tables: done
+Writing inode tables: done
 Creating journal (1024 blocks): done
 Writing superblocks and filesystem accounting information: done
 
@@ -83,9 +86,9 @@ Writing superblocks and filesystem accounting information: done
 5+0 records out
 5242880 bytes (5,2 MB, 5,0 MiB) copied, 0,0165564 s, 317 MB/s
 Copying files from virtual file to virtual file
-5,00MiB 0:00:00 [1,64GiB/s] [================================================================================================>] 100%            
-5,00MiB 0:00:00 [1,79GiB/s] [================================================================================================>] 100%            
-5,00MiB 0:00:00 [ 331MiB/s] [================================================================================================>] 100%            
+5,00MiB 0:00:00 [1,64GiB/s] [================================================================================================>] 100%
+5,00MiB 0:00:00 [1,79GiB/s] [================================================================================================>] 100%
+5,00MiB 0:00:00 [ 331MiB/s] [================================================================================================>] 100%
 5+0 records in
 5+0 records out
 5242880 bytes (5,2 MB, 5,0 MiB) copied, 0,0286135 s, 183 MB/s
@@ -96,15 +99,15 @@ Copying files from virtual file to virtual file
 5+0 records out
 5242880 bytes (5,2 MB, 5,0 MiB) copied, 0,0153829 s, 341 MB/s
 Copying files from virtual file to real file
-5,00MiB 0:00:00 [ 935MiB/s] [================================================================================================>] 100%            
-5,00MiB 0:00:00 [ 459MiB/s] [================================================================================================>] 100%            
+5,00MiB 0:00:00 [ 935MiB/s] [================================================================================================>] 100%
+5,00MiB 0:00:00 [ 459MiB/s] [================================================================================================>] 100%
 5,00MiB 0:00:00 [ 278MiB/s] [================================================================================================>] 100%
 
 ```
 
 ## Примеры использования
 
-```
+```bash
 scuf@scuf-VirtualBox:/media/sf_buba20/io_labs/io_labs/lab2$ sudo echo "1" | sudo dd of=/dev/vramdisk6
 0+1 records in
 0+1 records out
@@ -115,7 +118,4 @@ scuf@scuf-VirtualBox:/media/sf_buba20/io_labs/io_labs/lab2$ sudo xxd /dev/vramdi
 00000020: 0000 0000 0000 0000 0000 0000 0000 0000  ................
 00000030: 0000 0000 0000 0000 0000 0000 0000 0000  ................
 00000040: 0000 0000 0000 0000 0000 0000 0000 0000  ................
-
 ```
-
-

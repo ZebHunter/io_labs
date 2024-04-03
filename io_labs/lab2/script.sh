@@ -9,12 +9,12 @@ function prepare() {
     mkfs.ext4 /dev/vramdisk1
     mkfs.ext4 /dev/vramdisk5
     mkfs.ext4 /dev/vramdisk6
-    
+
     mkdir /mnt/vramdisk1
     mkdir /mnt/vramdisk5
     mkdir /mnt/vramdisk6
-    
-    
+
+
     mount /dev/vramdisk1 /mnt/vramdisk1
     mount /dev/vramdisk5 /mnt/vramdisk5
     mount /dev/vramdisk6 /mnt/vramdisk6
@@ -56,14 +56,15 @@ function final() {
     umount /mnt/vramdisk1
     umount /mnt/vramdisk5
     umount /mnt/vramdisk6
-    
+
     rmdir /mnt/vramdisk1
     rmdir /mnt/vramdisk5
     rmdir /mnt/vramdisk6
+
+    rm -r test
 }
 
 prepare
 copy_v_v
 copy_v_r
 final
-
