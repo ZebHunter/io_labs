@@ -1,5 +1,4 @@
-# name = lab3
-name = virt_net_if
+name = lab3
 obj-m = $(name).o
 PWD = $(shell pwd)
 
