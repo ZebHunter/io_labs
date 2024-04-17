@@ -50,26 +50,26 @@ static char check_frame(struct sk_buff *skb, unsigned char data_shift) {
 }
 
 static rx_handler_result_t handle_frame(struct sk_buff **pskb) {
-    
+
         if (check_frame(*pskb, 0)) {
             stats.rx_packets++;
             stats.rx_bytes += (*pskb)->len;
         }
         (*pskb)->dev = child;
         return RX_HANDLER_ANOTHER;
-} 
+}
 
 static int open(struct net_device *dev) {
     netif_start_queue(dev);
     printk(KERN_INFO "%s: device opened", dev->name);
-    return 0; 
-} 
+    return 0;
+}
 
 static int stop(struct net_device *dev) {
     netif_stop_queue(dev);
     printk(KERN_INFO "%s: device closed", dev->name);
-    return 0; 
-} 
+    return 0;
+}
 
 static netdev_tx_t start_xmit(struct sk_buff *skb, struct net_device *dev) {
     struct priv *priv = netdev_priv(dev);
@@ -90,7 +90,7 @@ static netdev_tx_t start_xmit(struct sk_buff *skb, struct net_device *dev) {
 
 static struct net_device_stats *get_stats(struct net_device *dev) {
     return &stats;
-} 
+}
 
 static struct net_device_ops net_device_ops = {
     .ndo_open = open,
@@ -108,7 +108,7 @@ static void setup(struct net_device *dev) {
     //fill in the MAC address
     for (i = 0; i < ETH_ALEN; i++)
         dev->dev_addr[i] = (char)i;
-} 
+}
 
 int __init vni_init(void) {
     int err = 0;
@@ -147,7 +147,7 @@ int __init vni_init(void) {
     printk(KERN_INFO "Module %s loaded", THIS_MODULE->name);
     printk(KERN_INFO "%s: create link %s", THIS_MODULE->name, child->name);
     printk(KERN_INFO "%s: registered rx handler for %s", THIS_MODULE->name, priv->parent->name);
-    return 0; 
+    return 0;
 }
 
 void __exit vni_exit(void) {
@@ -160,8 +160,8 @@ void __exit vni_exit(void) {
     }
     unregister_netdev(child);
     free_netdev(child);
-    printk(KERN_INFO "Module %s unloaded", THIS_MODULE->name); 
-} 
+    printk(KERN_INFO "Module %s unloaded", THIS_MODULE->name);
+}
 
 module_init(vni_init);
 module_exit(vni_exit);
