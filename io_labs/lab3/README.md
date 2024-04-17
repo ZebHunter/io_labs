@@ -29,7 +29,6 @@
 
 `make clean`
 
-
 ## Инструкция пользователя
 
 ```bash
@@ -46,7 +45,7 @@ dmesg
 
 ## Примеры использования
 
-```
+```bash
 [ 2092.310554] lab3: create link vni0
 [ 2092.310559] lab3: registered rx handler for eth0
 [ 2092.419604] IPv6: ADDRCONF(NETDEV_UP): vni0: link is not ready
